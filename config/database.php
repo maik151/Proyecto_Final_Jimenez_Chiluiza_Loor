@@ -32,6 +32,9 @@
             // Devuelve el objeto de conexión (si la conexión fue exitosa, $this->connexion tendrá el objeto PDO)
             return $this->connexion;
         }
+
+
+        
     }
 
 ?>

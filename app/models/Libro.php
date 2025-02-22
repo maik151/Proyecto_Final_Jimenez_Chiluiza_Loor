@@ -3,22 +3,21 @@
         private $id_libro;
         private $titulo_libro;
         private $ISBN;
-        private $autor_libro;
+        private $id_autor;
         private $genero_libro;
 
         public function __construct($id_libro, $titulo_libro, $ISBN, $autor_libro, $genero_libro){
             $this->id_libro = $id_libro;
             $this->titulo_libro = $titulo_libro;
             $this->ISBN = $ISBN;
-            $this->autor_libro = $autor_libro;
+            $this->id_autor = $id_autor;
             $this->genero_libro = $genero_libro;
         }
 
-        public function __construct($id_libro=null, $titulo_libro=null, $ISBN=null, $autor_libro=null, $genero_libro=null){
-            $this->id_libro = $id_libro;
+        public function __construct($titulo_libro=null, $ISBN=null, $id_autor=null, $genero_libro=null){
             $this->titulo_libro = $titulo_libro;
             $this->ISBN = $ISBN;
-            $this->autor_libro = $autor_libro;
+            $this->id_autor = $id_autor;
             $this->genero_libro = $genero_libro;
         }
 
@@ -35,8 +34,8 @@
         return $this->ISBN;
     }
 
-    public function getAutorLibro() {
-        return $this->autor_libro;
+    public function getIdAutor() {
+        return $this->id_autor;
     }
 
     public function getGeneroLibro() {
@@ -56,8 +55,8 @@
         $this->ISBN = $ISBN;
     }
 
-    public function setAutorLibro($autor_libro) {
-        $this->autor_libro = $autor_libro;
+    public function setIdAutor($id_autor) {
+        $this->id_autor= $id_autor;
     }
 
     public function setGeneroLibro($genero_libro) {

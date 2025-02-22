@@ -6,7 +6,13 @@ class Autor {
     private $nacionalidad;
 
     // Constructor con valores opcionales
-    public function __construct($id_autor = null, $nombre_autor = null, $edad = null, $nacionalidad = null) {
+    public function __construct($nombre_autor = null, $edad = null, $nacionalidad = null) {
+        $this->nombre_autor = $nombre_autor;
+        $this->edad = $edad;
+        $this->nacionalidad = $nacionalidad;
+    }
+
+    public function __construct($id_autor, $nombre_autor, $edad, $nacionalidad) {
         $this->id_autor = $id_autor;
         $this->nombre_autor = $nombre_autor;
         $this->edad = $edad;
