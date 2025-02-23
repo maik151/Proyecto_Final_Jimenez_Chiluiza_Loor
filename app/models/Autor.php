@@ -4,19 +4,16 @@ class Autor {
     private $nombre_autor;
     private $edad;
     private $nacionalidad;
+    private $genero;
 
     // Constructor con valores opcionales
-    public function __construct($nombre_autor = null, $edad = null, $nacionalidad = null) {
-        $this->nombre_autor = $nombre_autor;
-        $this->edad = $edad;
-        $this->nacionalidad = $nacionalidad;
-    }
 
-    public function __construct($id_autor, $nombre_autor, $edad, $nacionalidad) {
+    public function __construct($id_autor = null, $nombre_autor = null, $edad = null, $nacionalidad = null, $genero = null) {
         $this->id_autor = $id_autor;
         $this->nombre_autor = $nombre_autor;
         $this->edad = $edad;
         $this->nacionalidad = $nacionalidad;
+        $this->genero = $genero;
     }
 
     // Métodos getter (para obtener valores)
@@ -36,6 +33,10 @@ class Autor {
         return $this->nacionalidad;
     }
 
+    public function getGenero(){
+        return $this->genero;
+    }
+
     // Métodos setter (para asignar valores)
     public function setIdAutor($id_autor) {
         $this->id_autor = $id_autor;
@@ -51,6 +52,10 @@ class Autor {
     
     public function setNacionalidad($nacionalidad) {
         $this->nacionalidad = $nacionalidad;
+    }
+    
+    public function setGenero($genero){
+        $this->genero = $genero;
     }
 }
 ?>

@@ -14,13 +14,6 @@
             $this->genero_libro = $genero_libro;
         }
 
-        public function __construct($titulo_libro=null, $ISBN=null, $id_autor=null, $genero_libro=null){
-            $this->titulo_libro = $titulo_libro;
-            $this->ISBN = $ISBN;
-            $this->id_autor = $id_autor;
-            $this->genero_libro = $genero_libro;
-        }
-
         // Métodos Getter (para obtener valores)
     public function getIdLibro() {
         return $this->id_libro;

@@ -2,8 +2,8 @@
     
 // Incluimos el modelo de Libro
 require_once __DIR__.'/../models/Libro.php';
-
-class LibroRepository {
+include_once  __DIR__.'/../../config/database.php';
+class LibrosRepository {
 
     private $conn; // Variable para almacenar la conexión a la base de datos
     private $table_name = "libro"; // Nombre de la tabla en la base de datos
@@ -36,13 +36,9 @@ class LibroRepository {
     public function readAll(){
         // Consulta SQL para obtener todos los registros de libros
         $query = "SELECT * FROM {$this->table_name}"; 
-        
-        // Preparamos la consulta
-        $stmt = $this->conn->prepare($query); 
+        $stmt = $this->conn->prepare($query); // Preparamos la consulta
         $stmt->execute(); // Ejecutamos la consulta
-        
-        // Retornamos el objeto de la sentencia preparada para su posterior manipulación
-        return $stmt; 
+        return $stmt; // Retornamos el objeto de la sentencia preparada para su posterior manipulación
     }
 
     // Método para actualizar un libro
@@ -79,7 +75,7 @@ class LibroRepository {
         // Ejecutamos la consulta y retornamos el resultado
         return $stmt->execute(); 
     }
-
+    
     // Método para leer un solo libro por su 'id_libro'
     public function readOne($id_libro){ 
         // Consulta SQL para obtener un solo libro basado en su 'id_libro'
@@ -97,5 +93,27 @@ class LibroRepository {
         // Retornamos el primer resultado como un array asociativo
         return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
+
+
+
+
 }
+
+
+//INSTANCIAS DE PRUBA PARA VERIFICAR EL FUNCIONAMIENTO.
+// creo un objeto de tipo database el cual guarda la conexxion
+
+$databasePrueba = new Database();
+
+// obtenemos el objeto de conexion PDO 
+$conn = $databasePrueba->conectar();
+
+// creamos una instancia de lirboRepository 
+
+$libroPrueba = new LibrosRepository($conn);
+
+$libroPrueba->readAll();
+
+
+
 ?>
