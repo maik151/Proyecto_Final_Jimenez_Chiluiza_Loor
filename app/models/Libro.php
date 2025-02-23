@@ -6,7 +6,7 @@
         private $id_autor;
         private $genero_libro;
 
-        public function __construct($id_libro, $titulo_libro, $ISBN, $autor_libro, $genero_libro){
+        public function __construct($id_libro=null, $titulo_libro=null, $ISBN=null, $id_autor=null, $genero_libro=null){
             $this->id_libro = $id_libro;
             $this->titulo_libro = $titulo_libro;
             $this->ISBN = $ISBN;

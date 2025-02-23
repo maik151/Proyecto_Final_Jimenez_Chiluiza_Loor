@@ -11,60 +11,41 @@ $database = new Database();
 $conn = $database->conectar();
 
 // Instanciar el servicio de libro
-$autorService1 = new AutorService($conn);
+// $autorService1 = new AutorService($conn);
 $libroService1 = new LibroService($conn);
 
-$idEliminar = 3; 
+$idEliminar = 5; 
 
 
 // Datos del nuevo autor (modifica estos valores para probar)
-$autorData = new stdClass();
-$autorData->id_autor = 3; // Asegúrate de que este ID exista en tu base de datos
-$autorData->nombre_autor = "Nuevo Nombre";
-$autorData->edad_autor = 45;
-$autorData->nacionalidad = "Ecuadoriana";
-$autorData->genero = "Masculino";
+$libroData = new stdClass(); // Asegúrate de que este ID exista en tu base de datos
+$libroData->titulo_libro = "badman";
+$libroData-> ISBN= "EEUU-1457567";
+$libroData->id_autor = "3";
+$libroData->genero_libro = "Comics";
 
-$resultado = $autorService1->update($autorData);
+// $resultado = $libroService1->create($libroData);
 
 
 
 // Llamar a la función getALL() para obtener todos los libros
 // $borrado1 = $autorService1->delete($idEliminar);
 
-$resultados1 = $autorService1->getById($idEliminar);
-$resultados2 = $libroService1->getALL();
 
-// Verificar si se han obtenido resultados
 
-if ($resultados1) {
-    echo "Autor encontrado: <br>";
-        echo "ID: " . $resultados1['id_autor'] . "<br>";
-        echo "Nombre: " . $resultados1['nombre_autor'] . "<br>";
-        echo "Edad: " . $resultados1['edad_autor'] . "<br>";
-        echo "Nacinalidad: " . $resultados1['nacionalidad'] . "<br>";
-        echo "Género: " . $resultados1['genero'] . "<br><br>";
+
+//Mostrar unico libro por ID
+$resultados2 = $libroService1->delete(3);
+
+if ($resultados2){
+    echo 'Libro eliminado correctamente';
     
 } else {
-    echo "No se encontro el autor en la base de datos.";
+    echo "No se encontro dicho libro para elminar";
 }
 
-// if (!empty($resultados1)) {
-//     echo "Autores encontrados: <br>";
-//     foreach ($resultados1 as $autor) {
-//         echo "ID: " . $autor['id_autor'] . "<br>";
-//         echo "Nombre: " . $autor['nombre_autor'] . "<br>";
-//         echo "Edad: " . $autor['edad_autor'] . "<br>";
-//         echo "Nacinalidad: " . $autor['nacionalidad'] . "<br>";
-//         echo "Género: " . $autor['genero'] . "<br><br>";
-//     }
-// } else {
-//     echo "No se encontraron AUTORES en la base de datos.";
-// }
-
-
-
-
+$resultados2 = $libroService1->getALL();
+// Verificar si se han obtenido resultados
 //Tabla de libros
 if (!empty($resultados2)) {
     echo "Libros encontrados: <br>";
@@ -78,4 +59,3 @@ if (!empty($resultados2)) {
 } else {
     echo "No se encontraron libros en la base de datos.";
 }
-

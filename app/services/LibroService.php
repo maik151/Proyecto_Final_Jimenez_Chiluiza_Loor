@@ -20,9 +20,9 @@
             return $result;
         }
 
-        public function getById($id){
-            $data = $this->libroRepository->readOne($id);
-            return $data ? $data:null;
+        public function getById($id_libro){
+            $data = $this->libroRepository->readOne($id_libro);
+            return $data;
         }
 
         public function create($data){
@@ -36,19 +36,22 @@
         }
 
         public function update($data){
+
+            
             $libro = new Libro();
+            $libro->setIdLibro($data->id_libro);
             $libro->setTituloLibro($data->titulo_libro);
             $libro->setISBN($data->ISBN);
             $libro->setIdAutor($data->id_autor);
             $libro->setGeneroLibro($data->genero_libro);
-            $libro->setIdLibro($data->id_libro);
 
             return $this->libroRepository->update($libro);   
         }
 
 
-        public function delete($id){
-            return $this->libroRepository->delete($id);
+        public function delete($id_libro){
+            $data = $this->libroRepository->delete($id_libro);
+            return $data;
         }
 
     }
