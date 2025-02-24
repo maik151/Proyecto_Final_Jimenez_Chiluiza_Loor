@@ -19,7 +19,7 @@ $router->add('GET', '/libros', fn() => $libroController->index());
 $router->add('GET', '/libros/:id', fn($id) => $libroController->show($id));
 $router->add('POST', '/libros', fn() => $libroController->store());
 $router->add('PUT', '/libros', fn() => $libroController->update($id));
-$router->add('DELETE', '/libros', fn() => $libroController->destroy($id));
+$router->add('DELETE', '/libros/:id', fn($id) => $libroController->destroy($id));
 
 // // Rutas para Autores.
 $autorController = new AutorController();
