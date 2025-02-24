@@ -94,7 +94,7 @@ $libros = $libroService->getAll();
                 genero_libro: document.getElementById("genero_libro").value
             };
 
-            let url = id_libro ? "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/libros/editar" : "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/libros";
+            let url = id_libro ? "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/libros/" + id_libro : "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/libros";
             let method = id_libro ? "PUT" : "POST";
 
             if (id_libro) libro.id_libro = id_libro;
@@ -102,9 +102,9 @@ $libros = $libroService->getAll();
             axios({
                 method: method,
                 url: url,
-                data: libro, // Pasar los datos directamente como objeto (axios lo convierte a JSON)
+                data: JSON.stringify(libro),  // Convertimos el objeto a formato JSON
                 headers: {
-                    'Content-Type': 'application/json'  // Asegurarte de que el encabezado esté configurado correctamente
+                    'Content-Type': 'application/json'  // Asegúrate de que el encabezado esté configurado correctamente
                 }
             })
             .then(response => {

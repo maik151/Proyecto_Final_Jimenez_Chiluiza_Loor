@@ -59,16 +59,23 @@
         }
         
         public function update($id) {
+            // Leer los datos de la solicitud PUT (en formato JSON)
             $data = json_decode(file_get_contents("php://input"));
-            if (!empty($data->titulo) && !empty($data->autor) && !empty($data->anio)) {
-                $result = $this->libroService->update($id, $data);
+        
+            // Verificar que los datos necesarios estén presentes
+            if (!empty($data->titulo_libro) && !empty($data->ISBN) && !empty($data->id_autor) && !empty($data->genero_libro)) {
+                // Llamar al servicio para realizar la actualización
+                $result = $this->libroService->update($data);
+        
+                // Comprobar si la actualización fue exitosa
                 if ($result) {
-                    echo json_encode(['mensaje' => 'Libro actualizado']);
+                    echo json_encode(['mensaje' => 'Libro actualizado correctamente']);
                 } else {
                     http_response_code(500);
                     echo json_encode(['mensaje' => 'Error al actualizar el libro']);
                 }
             } else {
+                // Si faltan datos, devolver un error 400
                 http_response_code(400);
                 echo json_encode(['mensaje' => 'Datos incompletos']);
             }
