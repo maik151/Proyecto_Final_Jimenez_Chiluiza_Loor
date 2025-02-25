@@ -3,7 +3,7 @@
 CREATE DATABASE IF NOT EXISTS gestion_libros;
 USE gestion_libros;
 
-CREATE TABLE IF NOT EXISTS Autor (
+CREATE TABLE IF NOT EXISTS autor (
     id_autor INT AUTO_INCREMENT PRIMARY KEY,
     nombre_autor VARCHAR(255) NOT NULL,
     edad_autor INT CHECK (edad_autor > 0),
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Autor (
 );
 
 -- Creacion de tabla de libro
-CREATE TABLE IF NO EXISTS Libro (
+CREATE TABLE IF NO EXISTS libro (
     id_libro INT AUTO_INCREMENT PRIMARY KEY,
     titulo_libro VARCHAR(255) NOT NULL,
     ISBN VARCHAR(20) UNIQUE,
