@@ -6,7 +6,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-// Incluir el enrutador y los controladores.
+// // Incluir el enrutador y los controladores.
 require_once __DIR__ . '/../app/core/Router.php';
 require_once __DIR__ . '/../app/controllers/LibroController.php';
 require_once __DIR__ . '/../app/controllers/AutorController.php';
@@ -41,4 +41,7 @@ if ($uri == '') {
 
 // Despachar la petición.
 $router->dispatch($_SERVER['REQUEST_METHOD'], $uri);
+header('Location: /Proyecto_Final_Jimenez_Chiluiza_Loor/public/templates/gestion.php');
+exit(); // Asegura que el código no continúe ejecutándose después de la redirección.
+
 ?>

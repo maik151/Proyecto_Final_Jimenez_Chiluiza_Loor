@@ -9,9 +9,9 @@
 <div class="container">
   <footer class="footer-container py-3 my-4">
     <ul class="footer-nav nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="footer-item nav-item"><a href="index.php" class="footer-link nav-link px-2">Inicio</a></li>
-      <li class="footer-item nav-item"><a href="LibroView.php" class="footer-link nav-link px-2">Gestión de Libros</a></li>
-      <li class="footer-item nav-item"><a href="AutorView.php" class="footer-link nav-link px-2">Gestión de Autores</a></li>
+      <li class="footer-item nav-item"><a href="../../public/templates/gestion.php" class="footer-link nav-link px-2">Inicio</a></li>
+      <li class="footer-item nav-item"><a href="../../app/views/LibroView.php" class="footer-link nav-link px-2">Gestión de Libros</a></li>
+      <li class="footer-item nav-item"><a href="../../app/views/AutorView.php" class="footer-link nav-link px-2">Gestión de Autores</a></li>
     </ul>
     <p class="text-center footer-text">© 2024 Sistema de Gestión de Libros</p>
   </footer>

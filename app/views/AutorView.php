@@ -22,21 +22,40 @@ $autores = $autorService->getAll();
     
     <div class="container mt-4">
         <h2>Lista de Autores</h2>
-        <button class="btn btn-primary" onclick="abrirModalNuevoAutor()">Nuevo Autor</button>
+        <button class="btn btn-primary mb-3" onclick="abrirModalNuevoAutor()">Nuevo Autor</button>
         
-        <table class="table mt-4">
-            <tr><th>ID</th><th>Nombre</th><th>Edad</th><th>Acciones</th></tr>
-            <?php foreach ($autores as $autor): ?>
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <td><?= $autor['id_autor'] ?></td>
-                    <td><?= $autor['nombre_autor'] ?></td>
-                    <td><?= $autor['edad_autor'] ?></td>
-                    <td>
-                        <button class="btn btn-warning" onclick="editarAutor(<?= htmlspecialchars(json_encode($autor)) ?>)">Editar</button>
-                        <button class="btn btn-danger" onclick="eliminarAutor(<?= $autor['id_autor'] ?>)">Eliminar</button>
-                    </td>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Nacionalidad</th>
+                    <th>Género</th>
+                    <th>Acciones</th>
                 </tr>
-            <?php endforeach; ?>
+            </thead>
+            <tbody>
+                <?php foreach ($autores as $autor): ?>
+                    <tr>
+                        <td><?= $autor['id_autor'] ?></td>
+                        <td><?= $autor['nombre_autor'] ?></td>
+                        <td><?= $autor['edad_autor'] ?></td>
+                        <td><?= $autor['nacionalidad'] ?></td>
+                        <td><?= $autor['genero'] ?></td>
+                        <td>
+                            <!-- Icono de Editar -->
+                            <button class="btn btn-warning btn-sm" onclick="editarAutor(<?= htmlspecialchars(json_encode($autor)) ?>)">
+                                <i class="fas fa-edit"></i> <!-- Font Awesome icon for edit -->
+                            </button>
+                            <!-- Icono de Eliminar -->
+                            <button class="btn btn-danger btn-sm" onclick="eliminarAutor(<?= $autor['id_autor'] ?>)">
+                                <i class="fas fa-trash-alt"></i> <!-- Font Awesome icon for delete -->
+                            </button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 
@@ -50,13 +69,13 @@ $autores = $autorService->getAll();
                 <div class="modal-body">
                     <input type="hidden" id="id_autor">
                     <label>Nombre:</label>
-                    <input type="text" id="nombre_autor" class="form-control">
+                    <input type="text" id="nombre_autor" class="form-control mb-2">
                     <label>Edad:</label>
-                    <input type="number" id="edad_autor" class="form-control">
+                    <input type="number" id="edad_autor" class="form-control mb-2">
                     <label>Nacionalidad:</label>
-                    <input type="text" id="nacionalidad" class="form-control">
+                    <input type="text" id="nacionalidad" class="form-control mb-2">
                     <label>Género:</label>
-                    <select id="genero" class="form-control">
+                    <select id="genero" class="form-control mb-3">
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Otro">Otro</option>
@@ -69,7 +88,6 @@ $autores = $autorService->getAll();
             </div>
         </div>
     </div>
-
     <script>
         function abrirModalNuevoAutor() {
             document.getElementById("id_autor").value = "";
@@ -91,11 +109,32 @@ $autores = $autorService->getAll();
 
         function guardarAutor() {
             let id_autor = document.getElementById("id_autor").value;
+            let nombre_autor = document.getElementById("nombre_autor").value.trim();
+            let edad_autor = document.getElementById("edad_autor").value.trim();
+            let nacionalidad = document.getElementById("nacionalidad").value.trim();
+            let genero = document.getElementById("genero").value;
+
+            // Validaciones
+            if (nombre_autor === "") {
+                alert("El nombre del autor no puede estar vacío.");
+                return;
+            }
+
+            if (edad_autor === "" || isNaN(edad_autor) || parseInt(edad_autor) <= 0) {
+                alert("La edad debe ser un número positivo.");
+                return;
+            }
+
+            if (nacionalidad === "") {
+                alert("La nacionalidad no puede estar vacía.");
+                return;
+            }
+
             let autor = {
-                nombre_autor: document.getElementById("nombre_autor").value,
-                edad_autor: document.getElementById("edad_autor").value,
-                nacionalidad: document.getElementById("nacionalidad").value,
-                genero: document.getElementById("genero").value
+                nombre_autor: nombre_autor,
+                edad_autor: edad_autor,
+                nacionalidad: nacionalidad,
+                genero: genero
             };
 
             let url = id_autor ? "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/autores/" + id_autor : "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/autores";
@@ -119,7 +158,7 @@ $autores = $autorService->getAll();
         }
 
         function eliminarAutor(id_autor) {
-            if (confirm("Se eliminaran todos los libros registrados bajo este Autor. ¿Estás seguro de eliminar este Autor?")) {
+            if (confirm("Se eliminarán todos los libros registrados bajo este Autor. ¿Estás seguro de eliminar este Autor?")) {
                 axios.delete(`http://localhost/Proyecto_Final_Jimenez_Chiluiza_Loor/public/autores/${id_autor}`)
                     .then(response => {
                         alert("Autor eliminado");

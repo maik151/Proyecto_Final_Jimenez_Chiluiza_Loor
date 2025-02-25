@@ -50,19 +50,19 @@
 
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
-                        <a href="index.php" class="nav-link text-white">
+                        <a href="../../public/templates/gestion.php" class="nav-link text-white">
                             <i class="fa-regular fa-building fa-2x me-2"></i>
                             Inicio
                         </a>
                     </li>
                     <li>
-                        <a href="LibroView.php" class="nav-link text-white">
+                        <a href="../../app/views/LibroView.php" class="nav-link text-white">
                             <i class="fa-solid fa-book fa-2x me-2"></i>
                             Gestión de Libros
                         </a>
                     </li>
                     <li>
-                        <a href="AutorView.php" class="nav-link text-white">
+                        <a href="../../app/views/AutorView.php" class="nav-link text-white">
                         <i class="fa-solid fa-user-tie fa-2x me-2"></i>
                             Gestión de Autores
                         </a>
