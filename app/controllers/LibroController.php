@@ -27,7 +27,72 @@
             }
         }
 
+        public function store() {
+            // Obtener el cuerpo de la solicitud
+            $data = json_decode(file_get_contents("php://input"));
         
+            // Verificar si los datos fueron correctamente decodificados
+            if ($data === null) {
+                http_response_code(400); // Si no es JSON válido
+                echo json_encode(['mensaje' => 'Datos no válidos. Asegúrate de enviar un JSON correctamente formateado.']);
+                return;
+            }
+        
+            // Validar que los campos requeridos no estén vacíos
+            if (!empty($data->titulo_libro) && !empty($data->ISBN) && !empty($data->id_autor) && !empty($data->genero_libro)) {
+                // Llamar al servicio para crear el libro
+                $result = $this->libroService->create($data);
+                
+                // Verificar el resultado de la creación
+                if ($result) {
+                    http_response_code(201); // Respuesta 201 para recursos creados
+                    echo json_encode(['mensaje' => 'Libro creado correctamente.']);
+                } else {
+                    http_response_code(500); // Error en el servidor
+                    echo json_encode(['mensaje' => 'Error al crear el libro. Inténtalo de nuevo.']);
+                }
+            } else {
+                // Si faltan campos requeridos
+                http_response_code(400);
+                echo json_encode(['mensaje' => 'Datos incompletos. Todos los campos son requeridos.']);
+            }
+        }
+        
+        public function update($id) {
+            // Leer los datos de la solicitud PUT (en formato JSON)
+            $data = json_decode(file_get_contents("php://input"));
+        
+            // Verificar que los datos necesarios estén presentes
+            if (!empty($data->titulo_libro) && !empty($data->ISBN) && !empty($data->id_autor) && !empty($data->genero_libro)) {
+                // Llamar al servicio para realizar la actualización
+                $result = $this->libroService->update($data);
+        
+                // Comprobar si la actualización fue exitosa
+                if ($result) {
+                    echo json_encode(['mensaje' => 'Libro actualizado correctamente']);
+                } else {
+                    http_response_code(500);
+                    echo json_encode(['mensaje' => 'Error al actualizar el libro']);
+                }
+            } else {
+                // Si faltan datos, devolver un error 400
+                http_response_code(400);
+                echo json_encode(['mensaje' => 'Datos incompletos']);
+            }
+        }
+
+        public function destroy($id) {
+            // Asegúrate de que solo se elimina el libro con la ID proporcionada
+            $result = $this->libroService->delete($id);
+        
+            if ($result) {
+                http_response_code(200);
+                echo json_encode(['mensaje' => 'Libro eliminado correctamente']);
+            } else {
+                http_response_code(500);
+                echo json_encode(['mensaje' => 'Error al eliminar el libro']);
+            }
+        }
     }
 
 

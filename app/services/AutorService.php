@@ -47,8 +47,9 @@
         }
 
 
-        public function delete($id){
-            return $this->autorRepository->delete($id);
+        public function delete($id_autor){
+            $data = $this->autorRepository->delete($id_autor);
+            return $data;
         }
 
 

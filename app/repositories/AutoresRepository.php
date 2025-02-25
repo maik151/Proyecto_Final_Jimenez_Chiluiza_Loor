@@ -1,7 +1,7 @@
 <?php
 // Incluimos el modelo de Autor
 require_once __DIR__.'/../models/Autor.php';
-
+include_once  __DIR__.'/../../config/database.php';
 class AutorRepository{
     private $conn;
     private $table_name = "autor";
@@ -29,8 +29,7 @@ class AutorRepository{
         $stmt->bindParam(":genero", $genero);
     
         // Ejecuta la consulta
-        $stmt->execute();
-        return $stmt;
+        return $stmt->execute();
     }
 
     public function readAll(){
@@ -63,9 +62,7 @@ class AutorRepository{
         $stmt->bindParam(":nacionalidad", $nacionalidad);
         $stmt->bindParam(":genero", $genero);
         $stmt->bindParam(":id_autor", $id_autor);
-        
-        $stmt->execute();
-        return $stmt;
+        return $stmt->execute();
     }
 
     public function delete($id_autor){
