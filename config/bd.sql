@@ -1,8 +1,10 @@
 -- creacion de tabla de autor
 -- Crear base de datos (si no existe)
 CREATE DATABASE IF NOT EXISTS bd_libros_autores;
+
 USE bd_libros_autores;
 
+-- Crear la tabla de autor
 CREATE TABLE IF NOT EXISTS autor (
     id_autor INT AUTO_INCREMENT PRIMARY KEY,
     nombre_autor VARCHAR(255) NOT NULL,
@@ -11,16 +13,15 @@ CREATE TABLE IF NOT EXISTS autor (
     genero VARCHAR(50)
 );
 
--- Creacion de tabla de libro
-CREATE TABLE IF NO EXISTS libro (
+-- Crear la tabla de libro
+CREATE TABLE IF NOT EXISTS libro (
     id_libro INT AUTO_INCREMENT PRIMARY KEY,
     titulo_libro VARCHAR(255) NOT NULL,
     ISBN VARCHAR(20) UNIQUE,
     id_autor INT NOT NULL,
     genero_libro VARCHAR(100),
-    FOREIGN KEY (id_autor) REFERENCES Autor(id_autor) ON DELETE CASCADE
+    FOREIGN KEY (id_autor) REFERENCES autor(id_autor) ON DELETE CASCADE
 );
-
 -- ===========================================
 -- Script para la creación de la base de datos
 -- "gestion_libros" y sus tablas principales.
