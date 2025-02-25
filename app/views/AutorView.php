@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../services/AutorService.php';
+
 $database = new Database();
 $conn = $database->conectar();
 $autorService = new AutorService($conn);
@@ -97,22 +98,29 @@ $autores = $autorService->getAll();
                 genero: document.getElementById("genero").value
             };
 
-            let url = id_autor ? "/api/autores/editar" : "/api/autores";
+            let url = id_autor ? "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/autores/" + id_autor : "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/autores";
             let method = id_autor ? "PUT" : "POST";
 
             if (id_autor) autor.id_autor = id_autor;
 
-            axios({ method, url, data: autor })
-                .then(response => {
-                    alert("Autor guardado exitosamente");
-                    location.reload();
-                })
-                .catch(error => console.error(error));
+            axios({
+                method: method,
+                url: url,
+                data: JSON.stringify(autor),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                alert("Autor guardado exitosamente");
+                location.reload();
+            })
+            .catch(error => console.error(error));
         }
 
         function eliminarAutor(id_autor) {
-            if (confirm("¿Estás seguro de eliminar este autor?")) {
-                axios.delete("/api/autores/eliminar", { data: { id_autor } })
+            if (confirm("Se eliminaran todos los libros registrados bajo este Autor. ¿Estás seguro de eliminar este Autor?")) {
+                axios.delete(`http://localhost/Proyecto_Final_Jimenez_Chiluiza_Loor/public/autores/${id_autor}`)
                     .then(response => {
                         alert("Autor eliminado");
                         location.reload();

@@ -76,7 +76,7 @@ function guardarAutor() {
         genero: document.getElementById("genero").value
     };
 
-    let url = id_autor ? "/autores/" + id_autor : "/autores";
+    let url = id_autor ? "/Proyecto_Final_Jimenez_Chiluiza_Loor/public/autores/" + id_autor : "/autores";
     let method = id_autor ? "PUT" : "POST";
 
     if (id_autor) autor.id_autor = id_autor;
@@ -89,13 +89,14 @@ function guardarAutor() {
         .catch(error => console.error(error));
 }
 
-function eliminarAutor(id_autor) {
-    if (confirm("¿Estás seguro de eliminar este autor?")) {
-        axios.delete("/autores/" + id_autor)
-            .then(response => {
-                alert("Autor eliminado");
-                location.reload();
-            })
-            .catch(error => console.error(error));
-    }
+function eliminarAutor(id) {
+    axios.delete(`http://localhost/Proyecto_Final_Jimenez_Chiluiza_Loor/public/autores/${id}`)
+        .then(response => {
+            alert(response.data.mensaje);
+            location.reload();
+        })
+        .catch(error => {
+            console.error(error);
+            alert("Error al eliminar el autor.");
+        });
 }

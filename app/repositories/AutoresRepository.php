@@ -1,7 +1,7 @@
 <?php
 // Incluimos el modelo de Autor
 require_once __DIR__.'/../models/Autor.php';
-
+include_once  __DIR__.'/../../config/database.php';
 class AutorRepository{
     private $conn;
     private $table_name = "autor";
@@ -69,7 +69,8 @@ class AutorRepository{
         $query = "DELETE FROM {$this->table_name} WHERE id_autor = :id_autor";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id_autor", $id_autor);
-        return $stmt->execute();
+        $stmt->execute();
+        return $stmt;
 
     }
 

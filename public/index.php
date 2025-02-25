@@ -18,7 +18,7 @@ $libroController = new LibroController();
 $router->add('GET', '/libros', fn() => $libroController->index());
 $router->add('GET', '/libros/:id', fn($id) => $libroController->show($id));
 $router->add('POST', '/libros', fn() => $libroController->store());
-$router->add('PUT', '/libros/:id', fn() => $libroController->update($id));
+$router->add('PUT', '/libros/:id', fn($id) => $libroController->update($id));
 $router->add('DELETE', '/libros/:id', fn($id) => $libroController->destroy($id));
 
 // // Rutas para Autores.
@@ -26,8 +26,8 @@ $autorController = new AutorController();
 $router->add('GET', '/autores', fn() => $autorController->index());
 $router->add('GET', '/autores/:id', fn($id) => $autorController->show($id));
 $router->add('POST', '/autores', fn() => $autorController->store());
-$router->add('PUT', '/autores', fn() => $autorController->update($id));
-$router->add('DELETE', '/autores', fn() => $autorController->destroy($id));
+$router->add('PUT', '/autores/:id', fn($id) => $autorController->update($id));
+$router->add('DELETE', '/autores/:id', fn($id) => $autorController->destroy($id));
 
 // Obtener la URI solicitada.
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

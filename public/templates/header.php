@@ -19,10 +19,10 @@
                     <a class="nav-link" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="libros.php">Gestión de Libros</a>
+                    <a class="nav-link" href="LibroView.php">Gestión de Libros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="autores.php">Gestión de Autores</a>
+                    <a class="nav-link" href="AutorView.php">Gestión de Autores</a>
                 </li>
             </ul>
         </div>
