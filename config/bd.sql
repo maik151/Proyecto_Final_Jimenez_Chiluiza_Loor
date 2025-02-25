@@ -1,6 +1,6 @@
 -- creacion de tabla de autor
 -- Crear base de datos (si no existe)
-CREATE DATABASE IF NOT EXISTS gestion_libros;
+CREATE DATABASE IF NOT EXISTS Proyecto_Final_Jimenez_Chiluisa_Loor;
 USE gestion_libros;
 
 CREATE TABLE IF NOT EXISTS autor (
