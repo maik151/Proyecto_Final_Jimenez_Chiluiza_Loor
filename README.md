@@ -82,28 +82,14 @@ Este archivo permite que las rutas de tu proyecto sean más limpias y amigables 
 ### Requisitos previos
 
 1. *Instalar XAMPP* (o un servidor similar) para ejecutar PHP y MySQL.
-2. *Clonar el repositorio*:
-
-3. Por defecto se debe direccionar a: la dirección esta : http://localhost/Proyecto_Final_Jimenez_Chiluiza_Loor/public/templates/gestion.php
+2. *Clonar el repositorio* si se usa XAMPP copiar el proyecto dentro de la carpeta XAMPP/htdocs
 
 git clone https://github.com/maik151/Proyecto_Final_Jimenez_Chiluiza_Loor.git
-CREATE DATABASE IF NOT EXISTS bd_libros_autores;
-USE bd_libros_autores;
 
-CREATE TABLE IF NOT EXISTS autor (
-    id_autor INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_autor VARCHAR(255) NOT NULL,
-    edad_autor INT CHECK (edad_autor > 0),
-    nacionalidad VARCHAR(100),
-    genero VARCHAR(50)
-);
 
--- Creacion de tabla de libro
-CREATE TABLE IF NO EXISTS libro (
-    id_libro INT AUTO_INCREMENT PRIMARY KEY,
-    titulo_libro VARCHAR(255) NOT NULL,
-    ISBN VARCHAR(20) UNIQUE,
-    id_autor INT NOT NULL,
-    genero_libro VARCHAR(100),
-    FOREIGN KEY (id_autor) REFERENCES Autor(id_autor) ON DELETE CASCADE
-);
+### Configuración de la base de datos
+1. ** En phpMyAdmin importar el archivo bd.sql de"C:\xampp\htdocs\Proyecto_Final_Jimenez_Chiluiza_Loor\config\bd.sql"  y a continuación hacer clic en continuar. Esto creara la base de datos bd_libros_autores y las tablas Autor y Libro.
+
+### Ejecutar la aplicación
+1. ** Iniciar el servidor Apache y MySQL desde XAMPP.
+2. ** Abrir un navegador y acceder a: http://localhost/Proyecto_Final_Jimenez_Chiluiza_Loor/public/templates/gestion.php
