@@ -84,6 +84,8 @@ Este archivo permite que las rutas de tu proyecto sean más limpias y amigables 
 1. *Instalar XAMPP* (o un servidor similar) para ejecutar PHP y MySQL.
 2. *Clonar el repositorio*:
 
+3. Por defecto se debe direccionar a: la dirección esta : http://localhost/Proyecto_Final_Jimenez_Chiluiza_Loor/public/templates/gestion.php
+
 git clone https://github.com/maik151/Proyecto_Final_Jimenez_Chiluiza_Loor.git
 CREATE DATABASE IF NOT EXISTS bd_libros_autores;
 USE bd_libros_autores;
