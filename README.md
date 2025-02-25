@@ -76,3 +76,13 @@ Este archivo permite que las rutas de tu proyecto sean más limpias y amigables 
 - **Bootstrap**: Framework CSS para el diseño de la interfaz.
 - **JavaScript (Axios)**: Para realizar solicitudes HTTP al backend y actualizar dinámicamente las vistas.
 - **PDO (PHP Data Objects)**: Para interactuar de manera segura con la base de datos.
+
+## Instrucciones para Ejecutar la Aplicación
+
+### Requisitos previos
+
+1. *Instalar XAMPP* (o un servidor similar) para ejecutar PHP y MySQL.
+2. *Clonar el repositorio*:
+
+git clone https://github.com/maik151/Proyecto_Final_Jimenez_Chiluiza_Loor.git
+
