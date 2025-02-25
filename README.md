@@ -85,8 +85,8 @@ Este archivo permite que las rutas de tu proyecto sean más limpias y amigables 
 2. *Clonar el repositorio*:
 
 git clone https://github.com/maik151/Proyecto_Final_Jimenez_Chiluiza_Loor.git
-CREATE DATABASE IF NOT EXISTS gestion_libros;
-USE gestion_libros;
+CREATE DATABASE IF NOT EXISTS bd_libros_autores;
+USE bd_libros_autores;
 
 CREATE TABLE IF NOT EXISTS autor (
     id_autor INT AUTO_INCREMENT PRIMARY KEY,
