@@ -1,7 +1,7 @@
 -- creacion de tabla de autor
 -- Crear base de datos (si no existe)
-CREATE DATABASE IF NOT EXISTS Proyecto_Final_Jimenez_Chiluisa_Loor;
-USE gestion_libros;
+CREATE DATABASE IF NOT EXISTS bd_libros_autores;
+USE bd_libros_autores;
 
 CREATE TABLE IF NOT EXISTS autor (
     id_autor INT AUTO_INCREMENT PRIMARY KEY,
